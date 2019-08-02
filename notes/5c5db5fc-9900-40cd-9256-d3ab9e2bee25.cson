@@ -1,0 +1,26 @@
+createdAt: "2019-07-16T07:26:46.705Z"
+updatedAt: "2019-07-17T03:40:39.359Z"
+type: "MARKDOWN_NOTE"
+folder: "94eb92b0681577237a6e"
+title: "SEND BLAST EMAIL BY AMZ"
+tags: [
+  "blast_email"
+]
+content: '''
+  # SEND BLAST EMAIL BY AMZ
+  ##### 1. Modify template in local and push to cron_local_49 branch
+  - Be sure right template name
+  ##### 2. SSH to server
+  ```
+  ssh vietton@192.168.0.49
+  ```
+  ##### 3. Pull cron_local_49 branch 
+  ##### 4. Set cron to run
+  ```
+  */2 * * * * php /home/vietton/cron.wsgroup-asia.com/cron/send-mail-multi-refactor.php '-b' 'nusakodomo' '-q' 'kodomo' >> /home/vietton/cron.wsgroup-asia.com/cron/ntpdateLog.txt 2>&1
+  ```
+  - Always check "-b" and "-q" parameter
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

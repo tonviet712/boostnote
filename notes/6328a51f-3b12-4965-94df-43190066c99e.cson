@@ -1,0 +1,93 @@
+createdAt: "2019-08-02T02:52:14.155Z"
+updatedAt: "2019-08-02T10:22:11.541Z"
+type: "MARKDOWN_NOTE"
+folder: "94eb92b0681577237a6e"
+title: "CLEAN CODE"
+tags: [
+  "cleancode"
+]
+content: '''
+  # CLEAN CODE
+  ---
+  ## Chapter 1 - Clean Code
+  + A messy code base **causes a decrease in productivity** over time
+  + Code should be **elegant, have minimal dependencies, contain no duplication, and pass all tests**
+  + Code must not only be written cleanly, but the **cleanliness must be maintained** over time
+  ---
+  ## Chapter 2 – Meaningful Names
+  + Use **intention-revealing** names
+    + int d; compared to int daysPassed;
+  + Avoid **disinformation**
+    + Don’t call a variable an “accountList” if the type is not part of the List class
+    + Queue\\<Account> accountList; is bad
+    + List\\<Account> accountList; is fine
+    + List\\<Account> accounts; is better
+  + **Don’t use similar looking names** like “methodThatCallsUserAccount” and “methodThatCallsUserAccountInfo”
+    + Use **pronounceable** names
+    + Use **search-able** names
+    + Class names should be nouns like Customer, Account, etc…not a verb
+    + Don’t hesitate to rename items in an existing code base
+  ---
+  ## Chapter 3 – Functions
+  + Function viết nhỏ thôi!!! Tầm 20-30 lines là đủ
+  + Code trong if, else, switch, while,... nên block trong 1 function 
+    >Bad code 
+    ```
+    if(condition){
+      //hundreds of lines of code
+    }else if{
+        //hundreds of lines of code
+    } else {
+        //hundreds of lines of code
+    }
+    ```
+    >Clean code
+    ```
+    if(condition){
+      CommonMethod();
+      SpecificMethodA();
+    }else if{
+        CommonMethod();
+        SpecificMethodB();
+    } else {
+        CommonMethod();
+        SpecificMethodC();
+    }
+    ```
+  + Function chỉ nên **DO ONE (one depth level) THING**
+    Ex: Viết function để tạo ra 1 ly nước mía
+      1. bàoMía()
+          1. ~~rócMía()~~
+          2. ~~chặtNgọn()~~
+      2. xayMía()
+          1. ~~bậtMáy()~~
+          2. ~~chạy vòng lặp để xay~~
+      3. bỏNướcĐáVàoLy()
+      4. choNướcMíaVàoLy()
+  
+    **Những function nhỏ nên block lại trong function lớn**
+  + Vấn đề cấu trúc switch và polymorphism (tính đa hình)
+    ```
+    public static function tinhTienLuong($loaiNhanVien) 
+    {
+        switch ($loaiNhanVien) {
+            case SEP :
+                return luongSep($loaiNhanVien);
+            case QUANLY:
+                return luongQuanLy($loaiNhanVien);
+            case CULI:
+                return luongCuli($loaiNhanVien);
+        }
+        ...
+    }
+    ```
+      Vào 1 ngày đẹp trời, thêm 1 feature tinhTienThuong thì như nào? Chẵng lẽ lại phải  viết thêm 1 function tinhTienThuong => truyền biến $loaiNhanVien vào => switch lần nữa?
+      Lúc này phải nghĩ ngay đến việc đưa nó vào 1 object để dễ cho việc quản lý và mở rộng
+      ```
+      
+      ```
+      
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

@@ -1,0 +1,50 @@
+createdAt: "2019-07-22T02:11:05.841Z"
+updatedAt: "2019-08-01T04:51:19.844Z"
+type: "MARKDOWN_NOTE"
+folder: "94eb92b0681577237a6e"
+title: "[Offshore] Project Info"
+tags: [
+  "offshore"
+]
+content: '''
+  # [Offshore] Project Info
+  ## I. SmartLC
+  + Check logs: /private/logs
+  ### 1. S&B
+  + PRD URL: <https://sb.receiptcp.com/>
+  + DB info:
+  ```
+  http://34.85.60.161/phpMyAdmin-4.9.0.1/
+  smartlc_sb
+  Ux6oQpxEc7ZGdfuZ
+  ```
+  + Link app Line test: [LINE Add Friend](https://line.me/R/ti/p/%40288eyefu)
+  ### 2. Toycard
+  + PRD URL: <https://toycard.receiptcp.com/>
+  + DB info:
+  ```
+  toy_card_prd
+  oLHCF8dkQvEw39UW
+  http://35.221.79.36/phpMyAdmin-4.6.6/
+  ```
+  ## II. Aoi
+  + PRD URL: <https://www.aoi-net.co.jp/>
+  + DB info:
+    + Production
+    ```
+    https://secure.sakura.ad.jp/rs/db/mysql5/?server=mysql732.db.sakura.ne.jp
+    host: mysql732.db.sakura.ne.jp
+    user: aoi1800
+    pass: fx89zp3ez5
+    ```
+    + Staging 
+    ```
+    https://secure.haisurvey.net:8443/domains/databases/phpMyAdmin/index.php?db=offshoretesting_aoi
+    u: aoi
+    p: 3^19dpvO
+    db: offshoretesting_aoi
+    ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
