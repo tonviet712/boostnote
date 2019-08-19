@@ -1,5 +1,5 @@
 createdAt: "2019-08-02T02:52:14.155Z"
-updatedAt: "2019-08-02T10:22:11.541Z"
+updatedAt: "2019-08-19T09:58:59.404Z"
 type: "MARKDOWN_NOTE"
 folder: "94eb92b0681577237a6e"
 title: "CLEAN CODE"
@@ -9,6 +9,7 @@ tags: [
 content: '''
   # CLEAN CODE
   ---
+  ## Outline: [Clean Code – Milan Is Awesome](https://milanisaweso.me/index.php/portfolio/clean-code/)
   ## Chapter 1 - Clean Code
   + A messy code base **causes a decrease in productivity** over time
   + Code should be **elegant, have minimal dependencies, contain no duplication, and pass all tests**
@@ -32,7 +33,7 @@ content: '''
   + Function viết nhỏ thôi!!! Tầm 20-30 lines là đủ
   + Code trong if, else, switch, while,... nên block trong 1 function 
     >Bad code 
-    ```
+    ```php
     if(condition){
       //hundreds of lines of code
     }else if{
@@ -42,7 +43,7 @@ content: '''
     }
     ```
     >Clean code
-    ```
+    ```php
     if(condition){
       CommonMethod();
       SpecificMethodA();
@@ -67,7 +68,7 @@ content: '''
   
     **Những function nhỏ nên block lại trong function lớn**
   + Vấn đề cấu trúc switch và polymorphism (tính đa hình)
-    ```
+    ```php
     public static function tinhTienLuong($loaiNhanVien) 
     {
         switch ($loaiNhanVien) {
@@ -82,11 +83,129 @@ content: '''
     }
     ```
       Vào 1 ngày đẹp trời, thêm 1 feature tinhTienThuong thì như nào? Chẵng lẽ lại phải  viết thêm 1 function tinhTienThuong => truyền biến $loaiNhanVien vào => switch lần nữa?
-      Lúc này phải nghĩ ngay đến việc đưa nó vào 1 object để dễ cho việc quản lý và mở rộng
+      Lúc này phải nghĩ ngay đến việc đưa nó vào 1 object để dễ cho việc quản lý và mở rộng. Cách tốt nhất là sẽ dùng ABSTRACT FACTORY pattern để thiết kế.
+      ```php
+    interface WSFactory
+    {
+        public function createResearcher(): iResearcher;
+        public function createHandsomeIT(): iIT;
+    }
+    
+    interface iResearcher
+    {
+        public function createSurvey(): string;
+    }
+    
+    interface iIT
+    {
+        public function fixBug(): string;
+  
+        public function handleSurvey(iResearcher $collaborator): string;
+    }
+    
+  
+    class WSVina implements WSFactory
+    {
+        public function createResearcher(): iResearcher
+        {
+            return new VinaResearch;
+        }
+  
+        public function createHandsomeIT(): iIT
+        {
+            return new VinaHandsomeIT;
+        }
+    }
+    
+    class WSNusa implements WSFactory
+    {
+        public function createResearcher(): iResearcher
+        {
+            return new NusaResearch;
+        }
+  
+        public function createHandsomeIT(): iIT
+        {
+            return new NusaHandsomeIT;
+        }
+    }
+    
+    class VinaResearch implements iResearcher
+    {
+        public function createSurvey(): string
+        {
+            return "Vina Survey";
+        }
+    }
+    
+    class VinaHandsomeIT implements iIT
+    {
+        public function fixBug(): string
+        {
+            return "Bug!!!!!!!!!!!!!!!!!!!!!!!";
+        }
+        
+        public function handleSurvey(iResearcher $collaborator): string
+        {
+            $result = $collaborator->createSurvey();
+  
+            return "Collaboration of IT & Research ({$result})";
+        }
+    }
+  
+      $wsVina = new WSVina;
+      $vinaIt = $wsVina->createHandsomeIT();
+      ...
+      ```
+  
+  + Đặt tên CÓ NGHĨA (DESCRIPTIVE NAME), không sợ tên dài, chỉ sợ đặt tên ngu. Chú ý về yếu tố consistent trong khi đặt tên: image thì image toàn bộ, vừa image vừa picture thì lại rất stupid
+  
+  + Càng ít argument càng tốt: zero > one > two > three,...
+  
+  + Boolean argument cực kỳ tệ, nó vi phạm nguyên tác DO ONE THING. Thay vì thế chúng ta nên split thằng 2 function riêng biệt 
+  
+  + Khi function có quá nhiều arguments, nó CÓ THẺ mô phòng theo 1 class/object nào đó: 
+  
+      > **Ex: 
+      Circle makeCircle(x, y, radius); 
+      vs Circle makeCircle(Point center, radius);**
+      
+    Như ví dụ trên, (x,y) đã được class hóa bằng class Point center. 2 argument đã được thay thế bằng 1 object argument 
+    
+  + Một function chỉ nên ***CHANGE THE STATE*** HOẶC ***RETURN SOMETHING***
+      + STUPID
+      ```php
+      public function set($attr, $value) 
+      {
+        if (isset($this->$attr)) {
+          $this->$attr = $value;
+          return true;
+        }
+        return false;
+      }
+      ```
+      + CLEVER 
+      ```php
+        public function attrExists($attr)
+        {
+          return isset($this->$attr);
+        }
+        
+        public function setAttr($attr, $value)
+        {
+          $this->$attr = $value;
+        }
+        
+        if (attrExists("username")) {
+          setAttr("username", "vietcurly");
+        }
       ```
       
-      ```
-      
+  + ***Single entry / single exit***: minimize nhất có thể nhiều return trong 1 function. Tối ưu nhất là 1 return (xem lại case với switch)
+  
+  >  Writing software is like any other kind of writing. When you write a paper or an article, you get your thoughts down first, then you massage it until it reads well. The first draft might be clumsy and disorganized, so you wordsmith it and restructure it and refine it until it reads the way you want it to read.
+  >  Master programmers think of systems as **stories to be told** rather than **programs to be written**.
+  
 '''
 linesHighlighted: []
 isStarred: false
