@@ -1,5 +1,5 @@
 createdAt: "2019-07-22T02:11:05.841Z"
-updatedAt: "2019-08-16T02:02:16.454Z"
+updatedAt: "2020-01-08T04:41:58.755Z"
 type: "MARKDOWN_NOTE"
 folder: "94eb92b0681577237a6e"
 title: "[Offshore] Project Info"
@@ -36,6 +36,14 @@ content: '''
   super-admin@smart-receico.com
   J5iW2BQq
   ```
+  
+  ### 4. Demo - Mileague
+  + DB:
+  ```
+  http://35.221.79.36/phpMyAdmin-4.6.6/db_structure.php?server=1&db=mileage_demo
+  mileage_demo
+  AamXJ2ubKsv9Kk5
+  ```
   ## II. Aoi
   + PRD URL: <https://www.aoi-net.co.jp/>
   + DB info:
@@ -53,16 +61,36 @@ content: '''
     p: 3^19dpvO
     db: offshoretesting_aoi
     ```
-    ## III. Mynavi
+  ## III. Mynavi
     + DB info:
       + Staging
       ```
-      https://secure.haisurvey.net:8443/domains/databases/phpMyAdmin/index.php?db=offshoretesting_mynavi
+      https://secure.wsgroup-asia.asia:8443/domains/databases/phpMyAdmin/index.php?db=offshoretesting_mynavi
       mynavi
       2sqC8_y2
-      offshoretesting_mynavi>
+      ```
+      
+  ## IV. SBI
+    + DB info:
+      + Staging
+      ```
+      https://secure.wsgroup-asia.asia:8443/domains/databases/phpMyAdmin/index.php?db=offshoretesting_sbi&table=news&target=sql.php
+      sbi
+      ~Uo32hr1
+      ```
+      
+  ## V. KG CARRIER
+    + DB info:
+      + Staging
+      ```
+      https://secure.wsgroup-asia.asia:8443/domains/databases/phpMyAdmin/index.php?db=offshoretesting_kg-carrier&table=news&target=sql.php
+      kg_carrier
+      e@0Ry7s9
       ```
 '''
-linesHighlighted: []
+linesHighlighted: [
+  30
+  34
+]
 isStarred: false
 isTrashed: false
